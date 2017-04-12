@@ -17,10 +17,12 @@ package com.example.android.favoritetoys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     // TODO (1) Declare a TextView variable called mToysListTextView
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +30,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // TODO (3) Use findViewById to get a reference to the TextView from the layout
-
+        textView = (TextView) findViewById(R.id.tv_toy_name);
         // TODO (4) Use the static ToyBox.getToyNames method and store the names in a String array
-
+        String [] toynames = ToyBox.getToyNames();
         // TODO (5) Loop through each toy and append the name to the TextView (add \n for spacing)
+
+        //Right solution is textView.append(String s) but this works
+        String s="";
+        for(int i=0; i<toynames.length; i++){
+            s += toynames[i] + "\n";
+
+        }
+        textView.setText(s);
     }
 }
